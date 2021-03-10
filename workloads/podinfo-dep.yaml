@@ -41,16 +41,16 @@ spec:
             containerPort: 32000
             protocol: TCP
           - name: http-metrics
-            containerPort: 9797
+            containerPort: 32000
             protocol: TCP
           - name: grpc
-            containerPort: 9999
+            containerPort: 32000
             protocol: TCP
         command:
           - ./podinfo
-          - --port=9898
-          - --port-metrics=9797
-          - --grpc-port=9999
+          - --port=32000
+          - --port-metrics=32000
+          - --grpc-port=32000
           - --grpc-service-name=podinfo
           - --level=info
           - --random-delay=false
@@ -61,11 +61,11 @@ spec:
         livenessProbe:
           httpGet:
             path: /healthz
-            port: 9898
+            port: 32000
         readinessProbe:
           httpGet:
             path: /readyz
-            port: 9898
+            port: 32000
         resources:
           limits:
             cpu: 1000m
